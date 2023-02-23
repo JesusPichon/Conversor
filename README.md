@@ -1,2 +1,2 @@
 # Conversor
-Creación de un convertidor de divisas 
+Creación de un conversor de divisas en java.
