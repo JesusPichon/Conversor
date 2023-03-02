@@ -1,43 +1,66 @@
 package com.userinterface;
 
+
 import com.conversor.Conversor;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class UIConversor extends JFrame {
 
-    private JMenuBar menu;
-    private JComboBox opciones;
     private Conversor conversor;
-    private JLabel etiquetaElige;
-    private JLabel etiquetaCantidad;
+    private JMenuBar menu;
+    private JMenuItem opcionDivisa;
+    private JMenuItem opcionTermometro;
 
-    private JTextField cajaCantidad;
+    private PanelTermometro panelTermometro;
+    private PanelConversor panelConversor;
+
     public UIConversor() {
         this.setTitle("Conversor");
         this.setSize(500,500);
         this.setLayout(null);
-        this.conversor = new Conversor();
-        crearMenuDivisas();
-        etiquetaElige = new JLabel("Elije una moneda a la que deseas convertir tu dinero:");
-        etiquetaElige.setBounds(10,10, 350, 20);
 
-        etiquetaCantidad = new JLabel("Ingresa la cantidad  de dinero que deseas convertir:");
-        etiquetaCantidad.setBounds(10,80, 350, 20);
+        menu = new JMenuBar();
+        opcionDivisa = new JMenuItem("Divisa");
+        opcionTermometro = new JMenuItem("Termometro");
 
-        cajaCantidad = new JTextField();
-        cajaCantidad.setBounds(10,110, 100, 25);
+        menu.add(opcionDivisa);
+        menu.add(opcionTermometro);
+        menu.setBounds(0,0,500,20);
 
-        this.add(etiquetaElige);
-        this.add(etiquetaCantidad);
-        this.add(cajaCantidad);
-        this.add(opciones);
-    }
+        conversor = new Conversor();
 
-    private void crearMenuDivisas(){
-        String[] lista = conversor.getOpcionesDivisas();
-        opciones = new JComboBox(lista);
-        opciones.setBounds(10,40, 200, 20);
+        panelConversor = new PanelConversor(conversor);
+        panelConversor.setBounds(0,20,500,480);
+
+        panelTermometro = new PanelTermometro();
+        panelTermometro.setBounds(0,20,500,480);
+
+        panelConversor.setVisible(false);
+        panelTermometro.setVisible(false);
+
+        this.add(panelConversor);
+        this.add(panelTermometro);
+
+        //Eventos
+        opcionDivisa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"You selected: Divisa.");
+                panelConversor.setVisible(true);
+            }
+        });
+
+        opcionTermometro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"You selected: Termometro.");
+            }
+        });
+
+        this.add(menu);
     }
 
     public static void main(String[] args) {
