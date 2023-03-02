@@ -16,4 +16,8 @@ public abstract class Divisa {
     public void setCambio(double cambio) {
         this.cambio = cambio;
     }
+
+    public String getNombreDivisa(){
+        return this.getClass().getName().substring(14);
+    }
 }
