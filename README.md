@@ -2,7 +2,7 @@
 El siguiente repositorio muestra el codigo fuente escrito en java para la creación de un conversor.  
 Con las siguientes funciones:
 
-1.- Convertir mi moneda actual(pesos mexicanos) a alguna divisa dentro de las opciones del programa.  
+1.- Convertir mi moneda(pesos mexicanos) a alguna divisa dentro de las opciones del programa.  
 2.- Convertir alguna divisa (Dolar, Euro, Yen) a pesos mexicanos.  
 3.- Convertir Grados a Fahrenhit, Celcius, Kelvin
 
