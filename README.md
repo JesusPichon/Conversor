@@ -1,6 +1,5 @@
 # Conversor
-El siguiente repositorio muestra el codigo fuente escrito en java para la creación de un conversor.  
-Con las siguientes funciones:
+El siguiente repositorio muestra el codigo fuente escrito en java para la creación de un conversor.
 
 ## :hammer:Funcionalidades del proyecto
 - `Funcionalidad 1` Conversion de divisas (Pesos, Euros, Yens, Dolares, Won, Libra) 
