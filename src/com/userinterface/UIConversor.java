@@ -4,7 +4,6 @@ package com.userinterface;
 import com.conversor.Conversor;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class UIConversor extends JFrame {
@@ -15,7 +14,7 @@ public class UIConversor extends JFrame {
     private JMenuItem opcionTermometro;
 
     private PanelTermometro panelTermometro;
-    private PanelConversor panelConversor;
+    private PanelDivisa panelDivisa;
 
     public UIConversor() {
         this.setTitle("Conversor");
@@ -24,7 +23,7 @@ public class UIConversor extends JFrame {
 
         menu = new JMenuBar();
         opcionDivisa = new JMenuItem("Divisa");
-        opcionTermometro = new JMenuItem("Termometro");
+        opcionTermometro = new JMenuItem("Grados");
 
         menu.add(opcionDivisa);
         menu.add(opcionTermometro);
@@ -32,31 +31,33 @@ public class UIConversor extends JFrame {
 
         conversor = new Conversor();
 
-        panelConversor = new PanelConversor(conversor);
-        panelConversor.setBounds(0,20,500,480);
+        panelDivisa = new PanelDivisa(conversor);
+        panelDivisa.setBounds(0,20,500,480);
 
-        panelTermometro = new PanelTermometro();
+        panelTermometro = new PanelTermometro(conversor);
         panelTermometro.setBounds(0,20,500,480);
 
-        panelConversor.setVisible(false);
+        //Siempre que inicie ponga el panel de divisa
+        panelDivisa.setVisible(true);
         panelTermometro.setVisible(false);
 
-        this.add(panelConversor);
+        this.add(panelDivisa);
         this.add(panelTermometro);
 
         //Eventos
         opcionDivisa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"You selected: Divisa.");
-                panelConversor.setVisible(true);
+                panelDivisa.setVisible(true);
+                panelTermometro.setVisible(false);
             }
         });
 
         opcionTermometro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"You selected: Termometro.");
+                panelTermometro.setVisible(true);
+                panelDivisa.setVisible(false);
             }
         });
 

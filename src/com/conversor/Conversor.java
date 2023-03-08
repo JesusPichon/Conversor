@@ -1,19 +1,58 @@
 package com.conversor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Conversor {
 
+    private String[] listaOpcionesMoneda;
     private List<Divisa> listaDivisas;
+    private List<Grados> listaConversorTemperatura;
 
     public Conversor() {
+
         this.listaDivisas = new ArrayList<Divisa>();
         this.listaDivisas.add(new Dolar());
         this.listaDivisas.add(new Euro());
         this.listaDivisas.add(new Libra());
         this.listaDivisas.add(new Won());
         this.listaDivisas.add(new Yen());
+
+        listaOpcionesMoneda = new String[listaDivisas.size() * 2 ];
+
+        crearOpcionesMoneda();
+
+    }
+
+    private void crearOpcionesMoneda(){
+        int posicionLista = 0;
+        for (Divisa moneda: listaDivisas){
+            listaOpcionesMoneda[posicionLista] = "De pesos a " + moneda.getNombreDivisa();
+            posicionLista++;
+        }
+        for (Divisa moneda: listaDivisas){
+            listaOpcionesMoneda[posicionLista] = "De " + moneda.getNombreDivisa() + " a Pesos";
+            posicionLista++;
+        }
+    }
+
+    public int getIndexOpcion(String auxiliar){
+        int contador = 0;
+        boolean encontrado = false;
+        for (int i = 0; i < listaOpcionesMoneda.length; i++) {
+            if (listaOpcionesMoneda.equals(auxiliar)){
+                encontrado = true;
+                contador = i;
+            }
+        }
+
+        if (encontrado == true){
+            return contador;
+        }else{
+            return -1;
+        }
     }
 
     public List<Divisa> getDivisas() {
@@ -25,18 +64,6 @@ public class Conversor {
     }
 
     public String[] getOpcionesDivisas(){
-        String[] lista  = new String[ 2 * listaDivisas.size()];
-        int posicionLista = 0;
-        for (Divisa moneda: listaDivisas){
-            lista[posicionLista] = "De pesos a " + moneda.getNombreDivisa();
-            posicionLista++;
-        }
-        for (Divisa moneda: listaDivisas){
-            lista[posicionLista] = "De " + moneda.getNombreDivisa() + " a Pesos";
-            posicionLista++;
-        }
-        return lista;
+        return this.listaOpcionesMoneda;
     }
-
-
 }
