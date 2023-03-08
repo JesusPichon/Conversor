@@ -1,11 +1,13 @@
 package com.conversor.grados;
 
+import com.conversor.Conversor;
+
 public class TestGrados {
     public static void main(String[] args) {
-        Fahrenheit medida1 = new Fahrenheit(100);
+        Conversor conversor = new Conversor();
 
-        medida1.setCantidad(275);
-
-        System.out.println(medida1.convertirToCelcius());
+        for (int i = 0; i < conversor.getListaOpcionesGrados().length; i++) {
+            System.out.println(conversor.getListaOpcionesGrados()[i]);
+        }
     }
 }

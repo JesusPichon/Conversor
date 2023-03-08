@@ -20,4 +20,8 @@ public abstract class Grados {
     public abstract double convertirToFahrenheit();
 
     public abstract  double convertirToKelvin();
+
+    public String getNombre(){
+        return(this.getClass().getName().substring(21));
+    }
 }

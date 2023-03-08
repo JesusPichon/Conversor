@@ -54,26 +54,7 @@ public class MiPanel extends JPanel {
     }
 
     public void crearEventoBoton(){
-        botonConvertir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int index = menu.getSelectedIndex();
-                double cambio = 0, cantidad = 0;
-                DecimalFormat df = new DecimalFormat("0.00");
-                try {
-                    cantidad = Double.parseDouble(cajaCantidad.getText());
-                    if (index <= 5) {
-                        cambio = conversor.getDivisas().get(index).changePesosToDivisa(cantidad);
-                        etiquetaResultado.setText("$" + df.format(cambio));
-                    } else {
-                        cambio = conversor.getDivisas().get(index - 5).changeDivisaToPesos(cantidad);
-                        etiquetaResultado.setText("$" + df.format(cambio));
-                    }
-                } catch (Exception errorCaja) {
-                    etiquetaResultado.setText("Vuelve a ingresar la cantidad");
-                }
-            }
-        });
+
     }
 
     public JComboBox getMenu() {
@@ -92,4 +73,19 @@ public class MiPanel extends JPanel {
         return etiquetaCantidad;
     }
 
+    public JButton getBotonConvertir() {
+        return botonConvertir;
+    }
+
+    public JLabel getEtiquetaResultado() {
+        return etiquetaResultado;
+    }
+
+    public Conversor getConversor() {
+        return conversor;
+    }
+
+    public JTextField getCajaCantidad() {
+        return cajaCantidad;
+    }
 }

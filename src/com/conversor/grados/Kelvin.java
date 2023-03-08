@@ -12,9 +12,10 @@ public class Kelvin extends Grados{
     }
 
     @Override
-    public double convertirToFahrenheit() {
-        final float division = 9/5;
-        return(((getCantidad() - 273.15) * division) + 32);
+    public double convertirToFahrenheit(){
+        double cantidad = (getCantidad() - 273.15) * 9;
+        double division = cantidad / 5;
+        return(division + 32);
     }
 
     @Override

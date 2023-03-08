@@ -18,6 +18,6 @@ public abstract class Divisa {
     }
 
     public String getNombreDivisa(){
-        return this.getClass().getName().substring(14);
+        return this.getClass().getName().substring(22);
     }
 }
