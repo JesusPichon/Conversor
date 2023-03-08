@@ -1,9 +1,10 @@
 package com.conversor;
 
+import com.conversor.divisas.*;
+import com.conversor.grados.Grados;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public class Conversor {
 

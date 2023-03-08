@@ -1,4 +1,4 @@
-package com.conversor;
+package com.conversor.divisas;
 
 public class Euro extends Divisa{
     public Euro() {

@@ -1,4 +1,4 @@
-package com.conversor;
+package com.conversor.divisas;
 
 public abstract class Divisa {
     private double cambio;

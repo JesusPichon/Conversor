@@ -5,8 +5,7 @@ import com.conversor.Conversor;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.text.DecimalFormat;
 
 public class MiPanel extends JPanel {
     private JComboBox menu;
@@ -16,8 +15,6 @@ public class MiPanel extends JPanel {
     private JTextField cajaCantidad;
     private JButton botonConvertir;
     private Conversor conversor;
-
-    private double cantidad = 0;
 
     public MiPanel(Conversor conversor) {
         this.setLayout(null);
@@ -47,32 +44,36 @@ public class MiPanel extends JPanel {
         this.add(botonConvertir);
         this.add(etiquetaResultado);
 
-        try {
-            botonConvertir.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    int index = menu.getSelectedIndex();
-                    double cambio = 0;
-                    double cantidad = Double.parseDouble(cajaCantidad.getText());
-                    if(index <= 5){
-                        cambio = conversor.getDivisas().get(index).changePesosToDivisa(cantidad);
-                        etiquetaResultado.setText("$" + cambio);
-                    }else{
-                        cambio = conversor.getDivisas().get(index-5).changeDivisaToPesos(cantidad);
-                        etiquetaResultado.setText("$" + cambio);
-                    }
-                }
-            });
-        } catch (Exception err) {
-            etiquetaResultado.setText("Intente con otra canitdad");
-
-        }
+        crearEventoBoton();
     }
 
     public void crearMenu(Conversor conversor) {
         menu = new JComboBox();
         menu.setBounds(10, 40, 200, 20);
         this.add(menu);
+    }
+
+    public void crearEventoBoton(){
+        botonConvertir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int index = menu.getSelectedIndex();
+                double cambio = 0, cantidad = 0;
+                DecimalFormat df = new DecimalFormat("0.00");
+                try {
+                    cantidad = Double.parseDouble(cajaCantidad.getText());
+                    if (index <= 5) {
+                        cambio = conversor.getDivisas().get(index).changePesosToDivisa(cantidad);
+                        etiquetaResultado.setText("$" + df.format(cambio));
+                    } else {
+                        cambio = conversor.getDivisas().get(index - 5).changeDivisaToPesos(cantidad);
+                        etiquetaResultado.setText("$" + df.format(cambio));
+                    }
+                } catch (Exception errorCaja) {
+                    etiquetaResultado.setText("Vuelve a ingresar la cantidad");
+                }
+            }
+        });
     }
 
     public JComboBox getMenu() {

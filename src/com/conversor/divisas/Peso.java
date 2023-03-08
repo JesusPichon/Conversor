@@ -1,4 +1,4 @@
-package com.conversor;
+package com.conversor.divisas;
 
 public class Peso extends Divisa{
 

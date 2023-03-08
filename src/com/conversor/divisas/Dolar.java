@@ -1,7 +1,7 @@
-package com.conversor;
+package com.conversor.divisas;
 
 public class Dolar extends Divisa{
     public Dolar() {
-        this.setCambio(17.96);
+        this.setCambio(18.09);
     }
 }

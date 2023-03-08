@@ -1,4 +1,4 @@
-package com.conversor;
+package com.conversor.divisas;
 
 public class Yen extends Divisa {
 
